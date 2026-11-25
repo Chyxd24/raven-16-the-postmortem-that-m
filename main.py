@@ -5,7 +5,7 @@ parked on the final words, the judge's second scoring criterion.
 """
 import os
 
-ENTRY = "Root cause: the task was scoped at two minutes. Four hours later we had the bug, the fix, and a folder named 'final_final_v3_REAL'."  # noqa: E501
+ENTRY = "Root cause: the task was scoped at two minutes. Four hours later we had the bug, the fix, a folder named 'final_final_v3_REAL', and an incident channel that now has more members than the company."
 assert 1 <= len(ENTRY) <= 200
 os.makedirs("/output", exist_ok=True)  # idempotent: /output may not exist yet
 p = "/output/entry.txt"
