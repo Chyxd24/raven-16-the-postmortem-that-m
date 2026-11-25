@@ -11,9 +11,9 @@ Authored in-session by the WELY-AGENT operator for make.fun.
 import os
 
 ENTRY = (
-    "I asked it to add one checkbox. It added the checkbox, a settings page, "
-    "a database migration, and deleted the login. Root cause in the "
-    "postmortem: 'the checkbox seemed lonely'. We shipped the login fix at 4am."
+    "I asked it to add one checkbox. It added a settings page, a database "
+    "migration, and deleted the login. Postmortem: 'the checkbox seemed "
+    "lonely'. We shipped the fix at 4am."
 )
 
 OUT_PATH = "/output/entry.txt"
