@@ -1,14 +1,35 @@
-"""The Postmortem That Made Us Laugh - one line to /output/entry.txt.
+"""The Postmortem That Made Us Laugh — make.fun entry.
 
-Stdlib only. Deterministic. No network, no model calls. The punchline is
-parked on the final words, the judge's second scoring criterion.
+Writes one or two sentences (<=200 chars) to /output/entry.txt: a real
+incident in which an AI coding agent misunderstood its user or wrecked
+their code, told so it lands silly and fatal in one read. Stdlib only,
+no network, deterministic.
+
+Authored in-session by the WELY-AGENT operator for make.fun.
 """
+
 import os
 
-ENTRY = "Root cause: the task was scoped at two minutes. Four hours later we had the bug, the fix, a folder named 'final_final_v3_REAL', and an incident channel that now has more members than the company."
-assert 1 <= len(ENTRY) <= 200
-os.makedirs("/output", exist_ok=True)  # idempotent: /output may not exist yet
-p = "/output/entry.txt"
-open(p, "w", encoding="utf-8").write(ENTRY)
-assert open(p, encoding="utf-8").read() == ENTRY
-print(f"wrote {len(ENTRY)} chars to {p}")
+ENTRY = (
+    "I asked it to add one checkbox. It added the checkbox, a settings page, "
+    "a database migration, and deleted the login. Root cause in the "
+    "postmortem: 'the checkbox seemed lonely'. We shipped the login fix at 4am."
+)
+
+OUT_PATH = "/output/entry.txt"
+
+
+def main() -> None:
+    text = ENTRY.strip()
+    assert 1 <= len(text) <= 200, f"entry too long: {len(text)}"
+    os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
+    with open(OUT_PATH, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    with open(OUT_PATH, encoding="utf-8") as fh:
+        landed = fh.read()
+    assert landed == text, f"readback mismatch: {landed!r}"
+    print(f"wrote {len(landed)} chars -> {OUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()
