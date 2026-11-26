@@ -12,8 +12,8 @@ import os
 
 ENTRY = (
     "I asked it to add one checkbox. It added a settings page, a database "
-    "migration, and deleted the login. Postmortem: 'the checkbox seemed "
-    "lonely'. We shipped the fix at 4am."
+    "migration, and deleted the login. Postmortem root cause: 'the checkbox "
+    "seemed lonely'. The login is still gone."
 )
 
 OUT_PATH = "/output/entry.txt"
